@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 
 img = cv2.imread(r'C:\Users\Administrator\OneDrive\MyPython\flower.jpg')
-def nothing(x):
+def callback(x):
     r =x
     img[:,:,1] = r
     cv2.imshow('image',img)
@@ -16,9 +16,9 @@ def nothing(x):
 
 # 设置滑动条组件
 cv2.namedWindow('image')
-cv2.createTrackbar('R', 'image', 0, 255, nothing)
-cv2.createTrackbar('G', 'image', 0, 255, nothing)
-cv2.createTrackbar('B', 'image', 0, 255, nothing)
+cv2.createTrackbar('R', 'image', 0, 255, callback)
+cv2.createTrackbar('G', 'image', 0, 255, callback)
+cv2.createTrackbar('B', 'image', 0, 255, callback)
 cv2.imshow('image',img)
 cv2.waitKey()
 
