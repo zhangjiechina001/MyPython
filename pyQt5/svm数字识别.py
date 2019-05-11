@@ -28,14 +28,15 @@ num_1=np.array([[  0. ,  0. ,  4. , 15. , 13. ,  3.  , 0. ,  0. ,  0. ,  0. ,  7
    0.  , 0. ,  0.  , 0. ,  0.,   9.,  16. ,  6. ,  0. ,  0. ,  0. ,  0. ,  0.  ,12.  ,16.,
    3. ,  0. ,  0. ,  0.,   0.,   0.,  13. , 16.,   3. ,  0. ,  0. ,  0. ,  0. ,  0. , 15.,
   16. , 11.,   0.  , 0.]],np.float)
-
+num_4=cv2.imread('num_4.png',cv2.IMREAD_GRAYSCALE)
+# cv2.imshow('test')
 X_test=ss.transform(X_test)
 
 lsvc=LinearSVC()
 lsvc.fit(X_train,y_train)
 y_predict=lsvc.predict(X_test)
 y_testpredict=lsvc.predict(num_1)
-print(str(y_testpredict))
+print(str(y_testpredict[0]))
 print('The accuracy of Linear SVC is:',lsvc.score(X_test,y_test))
 from sklearn.metrics import classification_report
 classification=classification_report(y_test,y_predict, target_names=digits.target_names.astype(str))
