@@ -11,8 +11,8 @@ def Calu(x,y):
 fig=plt.figure()
 ax=Axes3D(fig)
 x,y=img.shape
-x=np.arange(0,x,1)
-y=np.arange(0,y,1)
+x=np.arange(0,x,10)
+y=np.arange(0,y,10)
 x,y=np.meshgrid(x,y)
 r=np.sqrt(x**2+y**2)
 z=255-Calu(x,y)
