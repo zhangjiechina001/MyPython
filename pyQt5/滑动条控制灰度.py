@@ -3,7 +3,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread(r'C:\Users\Administrator\OneDrive\MyPython\flower.jpg')
+img = cv2.imread('flower.jpg')
 zeros=np.zeros(shape=img.shape,dtype=np.uint8)
 def callback(x):
     gamma=x/255
