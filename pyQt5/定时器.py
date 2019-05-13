@@ -1,6 +1,6 @@
 #动态显示当前时间
-from PyQt5.QtWidgets import QApplication,QMainWindow,QWidget
-import sys
+from PyQt5.QtWidgets import QWidget
 
-class ShowTime(QWidget):
-    def __init__(self,parent=None):
+
+# class ShowTime(QWidget):
+# # #     def __init__(self,parent=None):

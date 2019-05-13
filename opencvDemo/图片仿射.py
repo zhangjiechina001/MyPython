@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import  cv2
 #左上角，左下角，右上角
 
-src=cv2.imread(r'D:\E\0.jpg')
+src=cv2.imread('DPlayer.png')
 cv2.imshow('src',src)
 imgshape=src.shape
 hiegh=imgshape[0]
