@@ -32,4 +32,11 @@ pt_data=np.vstack([[167,55],[162,57],[163,58],[166,56.55]])#0女生 1男生 输�
 pt_data=np.array(pt_data,dtype='float32')
 print(pt_data)
 pararr=svm.predict(pt_data)
-print(pararr)
+def printRes(result):
+    for i in range(len(result[1])):
+        if result[1][i][0]==0:
+            print('女生\n')
+        else:
+            print('男生\n')
+
+printRes(pararr)
