@@ -9,7 +9,7 @@ def callback(x):
     gamma=x/255
     global img
     global zeros
-    img2 = cv2.addWeighted(img, gamma, zeros,1-gamma, 1)
+    src,img2 = cv2.threshold(img,x,155,cv2.THRESH_BINARY)
     cv2.imshow('image',img2)
 
 # 创建一副黑色图像
