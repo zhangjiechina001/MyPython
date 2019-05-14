@@ -43,6 +43,7 @@ def verticalCut(img,img_num):
         cv2.imshow(str(img_num)+"_"+str(idx), tempimg)
         cv2.imwrite(img_num+'_'+str(idx)+'.jpg',tempimg)
         imgArr.append(tempimg)
+    return imgArr
     # cv2.waitKey()
     # plt.show()
 
@@ -85,13 +86,14 @@ def matchTemplate(src,matchSrc,label):
     tw,th=matchSrc.shape[:2]
     tl=(max_loc[0]+th+2,max_loc[1]+tw+2)
     cv2.rectangle(src,max_loc,tl,[0,0,0])
-    cv2.putText(src,label,max_loc,fontFace=cv2.FONT_HERSHEY_COMPLEX,fontScale=0.6,color=(240,230,0))
+    cv2.putText(src,label,max_loc,fontFace=cv2.FONT_HERSHEY_COMPLEX,fontScale=0.6,
+                color=(240,230,0))
     cv2.imshow('001',src)
-
 
 img = cv2.imread("ocrdetect.jpg")
 img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 binary=imgThreshold(img)
+horizontalCut(binary)
 cv2.imshow('result',binary)
 match=cv2.imread('num_1_1.jpg',cv2.COLOR_BGR2GRAY)
 matchTemplate(img,match,'5')
