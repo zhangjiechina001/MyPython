@@ -77,18 +77,28 @@ def horizontalCut(img):
     plt.show()
     return imgArr
 
-def matchTemplate(src,matchSrc):
-    srcimg,label=src
-    result=cv2.matchTemplate(matchSrc,src,cv2.TM_CCOEFF)
+#输入的分别是原图模板和标签
+def matchTemplate(src,matchSrc,label):
+    binaryc=imgThreshold(src)
+    result=cv2.matchTemplate(binaryc,matchSrc,cv2.TM_CCOEFF_NORMED)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
+    tw,th=matchSrc.shape[:2]
+    tl=(max_loc[0]+th+2,max_loc[1]+tw+2)
+    cv2.rectangle(src,max_loc,tl,[0,0,0])
+    cv2.putText(src,label,max_loc,fontFace=cv2.FONT_HERSHEY_COMPLEX,fontScale=0.6,color=(240,230,0))
+    cv2.imshow('001',src)
+
 
 img = cv2.imread("ocrdetect.jpg")
 img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 binary=imgThreshold(img)
 cv2.imshow('result',binary)
-returnImg=horizontalCut(binary)#212*200
-for idx in range(len(returnImg)):
-    verticalCut(returnImg[idx],'num_'+str(idx))
-# matchTemplate()
+match=cv2.imread('num_1_1.jpg',cv2.COLOR_BGR2GRAY)
+matchTemplate(img,match,'5')
+
+cv2.waitKey()
+cv2.destroyAllWindows()
+
 
 
 
