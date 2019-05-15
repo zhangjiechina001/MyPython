@@ -56,7 +56,7 @@ def horizontalCut(img):
         for j in range(0,y):
             if(img[i,j]==0):
                 pointCount[i]=pointCount[i]+1
-    plt.plot(x_axes,pointCount)
+    plt.plot(pointCount,x_axes)
     start=[]
     end=[]
     #对照片进行分割
@@ -68,11 +68,13 @@ def horizontalCut(img):
         #上个不为0当前为0，即为结束
         elif((pointCount[index]==0)&(pointCount[index-1]!=0)):
              end.append(index)
-    img1=img[start[0]:end[0],:]
-    img2=img[start[1]:end[1],:]
-    img3=img[start[2]:end[2],:]
-    imgArr=[img1,img2,img3]
-    for m in range(3):
+    # img1=img[start[0]:end[0],:]
+    # img2=img[start[1]:end[1],:]
+    # img3=img[start[2]:end[2],:]
+    imgArr=[]
+    for m in range(len(start)):
+        tempimg=img[start[m]:end[m],:]
+        imgArr.append(tempimg)
         cv2.imshow(str(m),imgArr[m])
     cv2.waitKey()
     plt.show()
@@ -90,7 +92,7 @@ def matchTemplate(src,matchSrc,label):
                 color=(240,230,0))
     cv2.imshow('001',src)
 
-img = cv2.imread("ocrdetect.jpg")
+img = cv2.imread("bestimg.jpg")
 img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 binary=imgThreshold(img)
 horizontalCut(binary)

@@ -20,7 +20,7 @@ y1=np.array([[0,0,0],[1,1,1],[2,2,2]],np.float32)
 # the default center is (0,0),if you want to change it to (2,3),you should let x minus 2 and y minus 3
 #when the angleInDegrees=True,that means the return is measured by angle , if not, it is radian.
 r1,theta1=cv2.cartToPolar(x1,y1,angleInDegrees=True)
-cv
+# cv
 print (r,theta)
 #下面为反变换，即将极坐标变为笛卡尔坐标。（r,theta）变换为（x,y）
 r=np.array([1,2,1],np.float32)

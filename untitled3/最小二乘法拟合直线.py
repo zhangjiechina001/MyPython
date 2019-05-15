@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 x = np.arange(-1, 1, 0.04)
 c=np.random.normal(0,0.01,size=[3,3])
-y = ((x * x - 1) ** 3 + 1) * (np.cos(x * 2) + 0.6 * np.sin(x * 1.3))+c
+y =x**2+c
 
 y1 = y + (np.random.rand(len(x)) - 0.5)
 

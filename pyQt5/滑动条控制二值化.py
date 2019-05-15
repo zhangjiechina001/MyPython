@@ -1,9 +1,12 @@
 import cv2
 import numpy as np
 
-img = cv2.imread("ocrdetect.jpg")
+img = cv2.imread("unFlood.jpg")
 img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 # img=cv2.pyrDown(img)
+# img=cv2.equalizeHist(img)
+# img=cv2.Canny(img,100,200)
+cv2.imshow('img',img)
 def callBack(x):
     global img
     global binary
