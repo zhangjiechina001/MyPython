@@ -23,14 +23,14 @@ blockStride=(8,8)#4 cell
 cellSize=(8,8)#4 cell
 nBin=9#9bin3780
 
-#2 hog create
+#2 hog create创建一个hog对象
 hog=cv2.HOGDescriptor(winSize,blockSize,blockStride,cellSize,nBin)
 
 svm=cv2.ml.SVM_create()
 
 featureNum=int(((128-16)/8+1)*((64-16)/8+1)*4*9)#3780
 fetureArray=np.zeros(((PosNum+NegNum),featureNum),dtype=np.float32)
-labelArray=np.zeros((((PosNum+NegNum),featureNum)),dtype=np.float32)
+labelArray=np.zeros((((PosNum+NegNum),1)),dtype=np.int32)
 
 for i in range(0,PosNum):
     fileNmae='pos\\'+str(i+1)+'.jpg'
@@ -64,7 +64,7 @@ rho=svm.getDecisionFunction(0,alpha)
 print(rho)
 print(alpha)
 alphaArray=np.zeros((1,1),np.float32)
-supportVArray=np.zeros({1,featureNum},np.float32)
+supportVArray=np.zeros((1,featureNum),np.float32)
 resultArray=np.zeros((1,featureNum),np.float32)
 alphaArray[0,0]=alpha
 
