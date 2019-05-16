@@ -44,6 +44,7 @@ for j in range(unwrapped_width):
         except Exception as e:
             except_count = except_count + 1
 print(except_count)
+cv2.namedWindow('Unwrapped',cv2.WINDOW_NORMAL)
 cv2.imshow("Unwrapped", unwrapped_img)
 cv2.imwrite('unFlood.jpg',unwrapped_img)
 cv2.waitKey(0)

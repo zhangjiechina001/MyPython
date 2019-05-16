@@ -47,7 +47,7 @@ def verticalCut(img,img_num):
     # cv2.waitKey()
     # plt.show()
 
-#对图片进行水平分割,返回的事照片数组
+#对图片进行水平分割,返回的是照片数组
 def horizontalCut(img):
     (x,y)=img.shape #返回的分别是矩阵的行数和列数，x是行数，y是列数
     pointCount=np.zeros(y,dtype=np.uint8)#每行黑色的个数

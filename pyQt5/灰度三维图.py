@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 
-img = cv2.imread(r'C:\Users\Administrator\OneDrive\MyPython\flower.jpg',cv2.IMREAD_GRAYSCALE)
+img = cv2.imread('flower.jpg',cv2.IMREAD_GRAYSCALE)
 def Calu(x,y):
     global img
     return img[x,y]
