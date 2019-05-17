@@ -3,7 +3,7 @@ import cv2
 import cv2
 import numpy as np
 
-img = cv2.imread("afterEqualize.jpg")
+img = cv2.imread("bestimg.jpg")
 img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 cv2.imshow('img',img)
 def callBack(x):

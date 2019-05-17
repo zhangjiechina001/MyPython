@@ -20,11 +20,12 @@ def verticalCut(img,img_num):
     #     if(pointCount[num]<0):
     #         pointCount[num]=0
     plt.plot(x_axes,pointCount)
+    plt.show()
     start = []
     end = []
     # 对照片进行分割
     print(pointCount)
-    for index in range(1, y-1):
+    for index in range(1, y):
         # 上个为0当前不为0，即为开始
         if ((pointCount[index-1] == 0) & (pointCount[index] != 0)):
             start.append(index)
