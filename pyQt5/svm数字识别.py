@@ -23,11 +23,11 @@ X_train=ss.fit_transform(X_train)
 # cv2.imshow('binary',num_5)
 # cv2.waitKey()
 # 0,0,0,1,0,0,0,0,
-num_1=np.array([[  0. ,  0. ,  4. , 15. , 13. ,  3.  , 0. ,  0. ,  0. ,  0. ,  7.,  14.,  16. ,  9. ,  0.,
-   0. ,  0.  , 0. ,  0. , 12.,  16.  , 8. ,  0.,   0. ,  0. ,  0. ,  0.,   6.,  16. ,  6.,
-   0.  , 0. ,  0.  , 0. ,  0.,   9.,  16. ,  6. ,  0. ,  0. ,  0. ,  0. ,  0.  ,12.  ,16.,
-   3. ,  0. ,  0. ,  0.,   0.,   0.,  13. , 16.,   3. ,  0. ,  0. ,  0. ,  0. ,  0. , 15.,
-  16. , 11.,   0.  , 0.]],np.float)
+
+pretect=cv2.imread('0__2.jpg',cv2.IMREAD_GRAYSCALE)
+pretect=cv2.resize(pretect,(8,8))
+num_1=np.array([pretect.ravel()],np.float)
+cv2.imshow('pretect',pretect)
 num_4=cv2.imread('num_4.png',cv2.IMREAD_GRAYSCALE)
 # cv2.imshow('test')
 X_test=ss.transform(X_test)

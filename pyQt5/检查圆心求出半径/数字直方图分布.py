@@ -15,10 +15,6 @@ def verticalCut(img,img_num):
             if(tempimg[j,i]==0):
                 pointCount[i]=pointCount[i]+1
     figure=plt.figure(str(img_num))
-    # for num in range(pointCount.size):
-    #     pointCount[num]=pointCount[num]
-    #     if(pointCount[num]<0):
-    #         pointCount[num]=0
     plt.plot(x_axes,pointCount)
     start = []
     end = []
@@ -32,14 +28,20 @@ def verticalCut(img,img_num):
         elif ((pointCount[index] != 0) & (pointCount[index +1] == 0)):
             end.append(index)
     imgArr=[]
-    for idx in range(0,len(start)):
+    for idx in range(0,len(end)):
         tempimg=img[ :,start[idx]:end[idx]]
+        h,w=tempimg.shape
+        if(w<10):
+            tempimg=img[:,start[idx]:end[idx]+2]
         cv2.imshow(str(img_num)+"_"+str(idx), tempimg)
-        cv2.imwrite(img_num+'_'+str(idx)+'.jpg',tempimg)
+        # cv2.imwrite(img_num+'_'+str(idx)+'.jpg',tempimg)
         imgArr.append(tempimg)
     plt.show()
     return imgArr
 
-src=cv2.imread('bestimg.jpg',cv2.IMREAD_GRAYSCALE)
+src=cv2.imread('unFloodAfterBinary.jpg',cv2.IMREAD_GRAYSCALE)
+keral=cv2.getStructuringElement(cv2.MORPH_RECT,(2,2))
+src=cv2.erode(src,kernel=keral)
+cv2.imshow('rigionl',src)
 verticalCut(src,'0_')
 cv2.waitKey()
