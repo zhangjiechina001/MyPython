@@ -15,20 +15,21 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import LinearSVC
 ss=StandardScaler()
 X_train=ss.fit_transform(X_train)
-# num_5=cv2.imread('5.jpg',cv2.IMREAD_GRAYSCALE)
-# num_5=num_5[80:150,80:150]
-# num_5=np.resize(num_5,(8,8))
-# num_5=num_5.ravel()
-# _,num_5=cv2.threshold(num_5,100,255,cv2.THRESH_BINARY)
-# cv2.imshow('binary',num_5)
-# cv2.waitKey()
-# 0,0,0,1,0,0,0,0,
 
-pretect=cv2.imread('0__2.jpg',cv2.IMREAD_GRAYSCALE)
+
+pretect=cv2.imread('5.png',cv2.IMREAD_GRAYSCALE)
+keral=cv2.getStructuringElement(cv2.MORPH_RECT,(2,2))
+pretect=cv2.erode(pretect,keral)
+print(pretect.shape)
+pretect=cv2.bitwise_not(pretect)
 pretect=cv2.resize(pretect,(8,8))
+cv2.imshow('pretect',pretect)
+cv2.imwrite('pretect.jpg',pretect)
+cv2.waitKey()
+
 num_1=np.array([pretect.ravel()],np.float)
 cv2.imshow('pretect',pretect)
-num_4=cv2.imread('num_4.png',cv2.IMREAD_GRAYSCALE)
+# num_4=cv2.imread('num_4.png',cv2.IMREAD_GRAYSCALE)
 # cv2.imshow('test')
 X_test=ss.transform(X_test)
 
