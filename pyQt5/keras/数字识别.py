@@ -25,6 +25,6 @@ num5=num5.reshape(-1,1,28,28)
 model = keras.models.load_model('CNNModel.h5')
 from keras.utils import plot_model
 plot_model(model,to_file='model.jpg')
-prediction = model.predict([prepare('num_8.jpg')])
+prediction = model.predict([prepare('0__1.jpg')])
 y_test=keras.utils.to_categorical(prediction,10)
 print(prediction)
