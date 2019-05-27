@@ -10,11 +10,11 @@ from keras.callbacks import TensorBoard
 
 batch_size=128
 num_class=10
-epochs=3
+epochs=10
 
 img_rows,img_cols=28,28
 
-(x_train,y_train),(x_test,y_test)=mnist.load_data()
+(x_train,y_train),(x_test,y_test)=mnist.load_data(r'C:\Users\Administrator\PycharmProjects\MyPython\pyQt5\keras\mnist.npz')
 import matplotlib.pyplot as plt
 fig = plt.figure()
 for i in range(9):

@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 #读取图片
 src_img=cv2.imread('09_30_13.jpg',cv2.IMREAD_GRAYSCALE)#  circle.png  09_30_13.jpg
-src_img=cv2.pyrDown(src_img)
+# src_img=cv2.pyrDown(src_img)
 cv2.imshow('src',src_img)
 #二值化
 ret,binary=cv2.threshold(src_img,87,255,cv2.THRESH_BINARY)
@@ -20,7 +20,7 @@ result_img=np.zeros(src_img.shape,np.uint8)
 for i in range(len(contours)):
     area=cv2.contourArea((contours[i]))
     # cv2.drawContours(result_img, contours, i, (255, 255, 255))
-    if(area<1000):
+    if(area<3000):
         continue
     x,y,w,h=cv2.boundingRect(contours[i])
     ratio=0.0
@@ -33,7 +33,7 @@ for i in range(len(contours)):
         print('x:',x+w/2,'y:',y+h/2)
         arcLength=cv2.arcLength(contours[i],True)
         print('周长为：%f\n'%arcLength)
-        reshapeValue=55
+        reshapeValue=110
         imgSave=src_img[y-reshapeValue:y+h+reshapeValue,x-reshapeValue:x+w+reshapeValue]
         cv2.imshow('imgSave',imgSave)
         cv2.imwrite('imgSave.jpg',imgSave)

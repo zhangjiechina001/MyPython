@@ -40,9 +40,12 @@ def verticalCut(img,img_num):
     plt.show()
     return imgArr
 
-src=cv2.imread('unFloodAfterBinary.jpg',cv2.IMREAD_GRAYSCALE)
-keral=cv2.getStructuringElement(cv2.MORPH_RECT,(2,2))
-src=cv2.erode(src,kernel=keral)
+src=cv2.imread('bestimg.jpg',cv2.IMREAD_GRAYSCALE)
+src=src[10:70,:]
+# keral=cv2.getStructuringElement(cv2.MORPH_RECT,(2,2))
+# src=cv2.erode(src,kernel=keral)
 cv2.imshow('rigionl',src)
+plt.imshow(src)
+plt.show()
 verticalCut(src,'0_')
 cv2.waitKey()

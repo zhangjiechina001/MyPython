@@ -19,12 +19,12 @@ def prepare(path):
     cv2.waitKey()
     return new_array.reshape(-1, img_size, img_size,1)
 
-num5=cv2.imread('5.png',cv2.IMREAD_GRAYSCALE)
+num5=cv2.imread('cut5.jpg',cv2.IMREAD_GRAYSCALE)
 num5=cv2.resize(num5,(28,28))
 num5=num5.reshape(-1,1,28,28)
 model = keras.models.load_model('CNNModel.h5')
 from keras.utils import plot_model
 plot_model(model,to_file='model.jpg')
-prediction = model.predict([prepare('num_8.jpg')])
+prediction = model.predict([prepare('cut5.jpg')])
 y_test=keras.utils.to_categorical(prediction,10)
 print(prediction)
