@@ -12,7 +12,7 @@ def prepare(path):
     # w,h=img_array.shape
     # img_array=img_array[:,0:15]
     # cv2.imshow('temp',img_array)
-    img_array=cv2.bitwise_not(img_array)
+    # img_array=cv2.bitwise_not(img_array)
 
     new_array = cv2.resize(img_array, (img_size, img_size))
     cv2.imshow('5',new_array)
@@ -25,6 +25,6 @@ num5=num5.reshape(-1,1,28,28)
 model = keras.models.load_model('CNNModel.h5')
 from keras.utils import plot_model
 plot_model(model,to_file='model.jpg')
-prediction = model.predict([prepare('cut5.jpg')])
+prediction = model.predict([prepare('cimg_1_1.jpg')])
 y_test=keras.utils.to_categorical(prediction,10)
 print(prediction)

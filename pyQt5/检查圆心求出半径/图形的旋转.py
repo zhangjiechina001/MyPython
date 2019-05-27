@@ -11,7 +11,7 @@ import cv2
 img1 = cv2.imread('imgSave.jpg', cv2.IMREAD_COLOR)
 print(img1.shape)
 x, y = img1.shape[:2]
-rotate = cv2.getRotationMatrix2D((x / 2, y / 2), 50, 1)
+rotate = cv2.getRotationMatrix2D((x / 2, y / 2), -150, 1)
 res = cv2.warpAffine(img1, rotate, (int( x), int( y)))
 print(res.shape)
 cv2.imshow('img', img1)

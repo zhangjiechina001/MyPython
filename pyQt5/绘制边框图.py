@@ -26,8 +26,8 @@ import numpy as np
 white = np.zeros(src.shape, np.float32)
 for i in range(len(contours)):
     (x,y,w,h)=cv2.boundingRect(contours[i])
-
     cv2.rectangle(white,(x,y),(x+w,y+h),color=(255,0,244))
+
 # src=cv2.drawContours(white,contours[1],-1,color=(100,190,200),thickness=3)
 cv2.imshow('result',white)
 cv2.waitKey()

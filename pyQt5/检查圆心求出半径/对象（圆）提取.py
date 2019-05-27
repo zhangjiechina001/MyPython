@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 #读取图片
-src_img=cv2.imread('09_30_13.jpg',cv2.IMREAD_GRAYSCALE)#  circle.png  09_30_13.jpg
+src_img=cv2.imread('09_30_40.jpg',cv2.IMREAD_GRAYSCALE)#  circle.png  09_30_13.jpg
 # src_img=cv2.pyrDown(src_img)
 cv2.imshow('src',src_img)
 #二值化
