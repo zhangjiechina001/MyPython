@@ -19,7 +19,7 @@ def resizeSquare(srcimg):
     cv2.imshow('binary',binary)
 
 
-img = cv2.imread("imgSave.jpg")
+img = cv2.imread("09_30_40.jpg")
 # img=cv2.pyrDown(img)
 # img=cv2.pyrDown(img)
 resizeSquare(img)
