@@ -23,6 +23,7 @@ img = cv2.imread("unFloodAfterBinary.jpg")
 # img=cv2.pyrDown(img)
 # img=cv2.pyrDown(img)
 resizeSquare(img)
+# img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 cv2.imshow("panoramagram", img)
 # 得到圆形区域的中心坐标
 x0 = img.shape[0] // 2

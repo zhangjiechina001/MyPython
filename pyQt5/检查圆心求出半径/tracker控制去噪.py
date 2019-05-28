@@ -3,7 +3,7 @@ import cv2
 import cv2
 import numpy as np
 
-img = cv2.imread("unFloodAfterBinary.jpg")
+img = cv2.imread("unFlood.jpg")
 img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 # cv2.imshow('img',img[13:44,1000:1700])
 def callBack(x):
