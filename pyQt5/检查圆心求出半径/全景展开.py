@@ -36,7 +36,7 @@ except_count = 0
 for j in range(unwrapped_width):
     theta = -2 * math.pi * (j / unwrapped_width)  # 1. start position such as "+ math.pi"
     # theta=theta+0.75*math.pi
-    for i in range(unwrapped_height):
+    for i in range(unwrapped_height-850):
         unwrapped_radius = radius - i  # 2. don't forget
         x = unwrapped_radius * math.cos(theta) + x0  # 3. "sin" is clockwise but "cos" is anticlockwise
         y = unwrapped_radius * math.sin(theta) + y0
