@@ -4,6 +4,14 @@ import keras
 import os
 os.environ["PATH"] += os.pathsep + r'F:\Program Files (x86)\Graphviz2.38\bin'
 categories = ['0','1','2','3','4','5','6','7','8','9']
+def printCategories(inputarr):
+    inputarr=inputarr.astype('int')
+    inputarr=inputarr.ravel()
+    for i in range(len(inputarr)):
+        if(inputarr[i]==1):
+            idx=i
+            break
+    print(categories[idx])
 
 
 def prepare(path):
@@ -27,4 +35,4 @@ from keras.utils import plot_model
 plot_model(model,to_file='model.jpg')
 prediction = model.predict([prepare('img2_10_2.jpg')])
 y_test=keras.utils.to_categorical(prediction,10)
-print(prediction)
+print(printCategories(prediction))
