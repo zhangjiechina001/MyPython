@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread("09_30_13.jpg")
+img = cv2.imread("pic.png")
 img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 # img=cv2.pyrDown(img)
 # img=cv2.equalizeHist(img)

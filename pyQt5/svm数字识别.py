@@ -13,6 +13,7 @@ print("测试数据量:",y_test.shape)
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import LinearSVC
+from sklearn import svm
 ss=StandardScaler()
 X_train=ss.fit_transform(X_train)
 
@@ -33,6 +34,7 @@ cv2.imshow('pretect',pretect)
 # cv2.imshow('test')
 X_test=ss.transform(X_test)
 
+# clf=svm.SVC(keral='rbf')
 lsvc=LinearSVC()
 lsvc.fit(X_train,y_train)
 y_predict=lsvc.predict(X_test)

@@ -11,7 +11,7 @@ src=cv2.imread('09_30_40.jpg',cv2.IMREAD_GRAYSCALE)
 #二值化
 ret,binary=cv2.threshold(src,87,255,cv2.THRESH_BINARY)
 cv2.namedWindow('binary',cv2.WINDOW_NORMAL)
-# cv2.imshow('binary',binary)
+cv2.imshow('binary1',binary)
 
 #形态学处理
 kernel=cv2.getStructuringElement(cv2.MORPH_RECT,(5,5))
@@ -23,6 +23,7 @@ cv2.imshow('morpho',dst_img)
 
 #寻找边界
 #返回的是原图片，边界集合，轮廓的属性
+src=dst_img
 _,contours,_=cv2.findContours(dst_img, cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 result_img=np.zeros(src.shape,np.uint8)
 for i in range(len(contours)):
@@ -38,8 +39,9 @@ for i in range(len(contours)):
         cv2.drawContours(result_img,contours,i,(255,255,255))
         size=100
         src=src[y-size:y+h+size,x-size:x+w+size]
-# cv2.imshow('contours',result_img)
-# cv2.imshow('result',src)
+cv2.imshow('contours',result_img)
+cv2.imwrite('contours.png',result_img)
+cv2.imshow('result',src)
 
 #圆环拉升为矩形
 #找到圆形区域的中心坐标
@@ -65,6 +67,14 @@ for j in range(unwrapped_width):
 print('except_count:'+str(except_count))
 # cv2.namedWindow('Unwrapped',cv2.WINDOW_NORMAL)
 unwrapped_img=unwrapped_img[20:80,:]
+# src=cv2.resize(src,(30,30))
+plt.imshow(cv2.cvtColor(unwrapped_img,cv2.COLOR_GRAY2RGB))#1944
+plt.xlabel('w',fontproperties='SimHei',fontsize=15)
+plt.ylabel('h',fontproperties='SimHei',fontsize=15)
+plt.minorticks_on()
+plt.xticks([])
+plt.yticks([])
+plt.show()
 # cv2.imshow("Unwrapped", unwrapped_img)
 # cv2.imwrite('unFlood.jpg',unwrapped_img)
 

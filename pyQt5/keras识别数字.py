@@ -1,4 +1,5 @@
 import numpy as np
+from keras.callbacks import TensorBoard
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import Dropout
@@ -7,6 +8,7 @@ from keras.layers.convolutional import Conv2D
 from keras.layers.convolutional import MaxPooling2D
 from keras.utils import np_utils
 from keras import backend
+import tensorboard
 backend.set_image_data_format('channels_first')
 
 
@@ -52,7 +54,7 @@ def create_model():
 
 
 model = create_model()
-model.fit(x_train, y_train, epochs=2, batch_size=50, verbose=2)
+model.fit(x_train, y_train, epochs=2, batch_size=50, verbose=2,callbacks=[TensorBoard(log_dir='./tmp/log')])
 
 score = model.evaluate(x_validation, y_validation, verbose=0)
 print('CNN_Small: %.2f%%' % (score[1]*100))
