@@ -8,7 +8,7 @@ from scipy import signal
 #读取图片
 src=cv2.imread('09_30_40.jpg',cv2.IMREAD_GRAYSCALE)
 
-#二值化
+#二值化处理
 ret,binary=cv2.threshold(src,87,255,cv2.THRESH_BINARY)
 cv2.namedWindow('binary',cv2.WINDOW_NORMAL)
 # cv2.imshow('binary',binary)
