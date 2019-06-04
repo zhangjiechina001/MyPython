@@ -29,8 +29,7 @@ def FindMaxArea(img):
         if(ratio>0.9)&(ratio<1.1):
             size=80
             result=img[y-size:y+h+size,x-size:x+w+size]
-            plt.imshow(result)
-            plt.show()
+
     return  result
 
 def ExpandImg(img):
@@ -85,8 +84,8 @@ def CutImg(img):
     result=signal.convolve2d(img,kernel,'valid')
     result=cv2.threshold(result,1000,1,cv2.THRESH_BINARY)
     hist=result[1].ravel()
-    plt.plot(hist)
-    plt.show()
+    # plt.plot(hist)
+    # plt.show()
     startIdx=[]
     endIdx=[]
     for i in range(len(hist)):
@@ -99,8 +98,9 @@ def CutImg(img):
     imgarr=[]
     for i in range(len(startIdx)):
         tempimg=img[:,startIdx[i]:endIdx[i]]
-        # cv2.imshow(str(i),tempimg)
+        # cv2.imwrite(str(i)+'.jpg',tempimg)
         imgarr.append(tempimg)
+        # cv2.waitKey()
     return imgarr
 
 #图像的预处理和切割，输入的是灰度图
@@ -112,9 +112,96 @@ def FirstStep(img):
     imgarr=CutImg(result)
     return imgarr
 #endregion
-img=cv2.imread('09_30_13.jpg',cv2.IMREAD_GRAYSCALE)
-imgarr=FirstStep(img)
 
+
+#region 识别字符
 #再将已经分割好的照片再次切割为最终需要识别的照片，然后利用卷积神经网络和SVM进行识别
 #卷积神经网络识别数据
-def
+import keras
+from keras.utils import plot_model
+
+# categories = ['0','1','2','3','4','5','6','7','8','9']
+def printCategories(inputarr):
+    categories = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    # inputarr=inputarr.astype('int')
+    inputarr=inputarr.ravel()
+    idx=0
+    for i in range(len(inputarr)):
+        if(inputarr[i]>0.9)&(inputarr[i]<1.1):
+            idx=i
+            break
+    return categories[idx]
+
+model=keras.models.load_model('CNNModel.h5')
+
+def ClassNum(img):
+    h,w=img.shape
+    array=[h,w]
+    max=np.argmax([h,w])
+    max=array[max]
+    mask=np.zeros(shape=(max,max),dtype=np.uint8)
+    x,y=(max-h)//2,(max-w)//2
+    mask[0+x:h+x,0+y:w+y]=img[0:h,0:w]
+    mask=cv2.resize(mask,dsize=(28,28))
+    num=mask.reshape(-1,1,28,28)
+    prediction=model.predict(num)
+    return printCategories(prediction)
+
+def CutNumArea(img):
+    kernel=cv2.getStructuringElement(cv2.MORPH_RECT,(2,2))
+    img=cv2.erode(img,kernel)
+    h, w = img.shape
+    # kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2))
+    # img = cv2.erode(img, kernel)
+    # 先将大的分割出来
+    kernel = np.ones((h, 2), dtype=np.float32)
+    result = signal.convolve2d(img, kernel, 'valid')
+    result = cv2.threshold(result, 40, 1, cv2.THRESH_BINARY)
+    hist = result[1].ravel()
+    # plt.plot(hist)
+    # plt.show()
+    startIdx = []
+    endIdx = []
+    for i in range(1,len(hist)):
+        if (hist[i - 1] == 1) & (hist[i] == 0):
+            endIdx.append(i)
+        if (hist[i - 1] == 0) & (hist[i] == 1):
+            startIdx.append(i)
+    # startIdx.insert(0, 0)
+    endIdx.append(w)
+    for i in range(len(startIdx)):
+        if(endIdx[i]-startIdx[i]>50):
+            mediu=(startIdx[i]+endIdx[i])//2
+            startIdx.insert(i+1,mediu)
+            endIdx.insert(i,mediu)
+    imgarr = []
+    for i in range(len(startIdx)):
+        tempimg = img[:, startIdx[i]:endIdx[i]]
+        imgarr.append(tempimg)
+        # cv2.imshow(str(i),tempimg)
+    # cv2.waitKey()
+    return imgarr
+
+def IdentityNum():
+    img = cv2.imread('09_30_40.jpg', cv2.IMREAD_GRAYSCALE)
+    imgarr = FirstStep(img)
+    numsarr=[]
+    for i in range(len(imgarr)):
+        cv2.imshow(str(i),imgarr[i])
+        if (i==2):continue
+        if (i==2|3):
+            continue
+        tempimgarr=CutNumArea(imgarr[i])
+        for j in range(len(tempimgarr)):
+           numsarr.append(str(i)+':'+str(ClassNum(tempimgarr[j])))
+    print(numsarr)
+import time
+
+import datetime
+starttime=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S:%f')
+print(starttime)
+IdentityNum()
+endtime=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S:%f')
+print(endtime)
+cv2.waitKey()
+# print(endtime-starttime)
