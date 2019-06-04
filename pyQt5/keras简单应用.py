@@ -29,7 +29,7 @@ model.add(Dense(512,activation='relu',input_shape=(784,)))
 model.add(Dropout(0.2))
 model.add(Dense(512,activation='relu',use_bias=True))
 model.add(Dropout(0.2))
-model.add(Dense(200,activation='relu'))
+model.add(Dense(256,activation='relu'))
 model.add((Dropout(0.1)))
 model.add(Dense(num_class,activation='softmax'))
 
