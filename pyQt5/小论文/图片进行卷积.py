@@ -3,6 +3,7 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 from scipy import signal
+import hmmlearn
 
 def CutNumArea(img):
     kernel=cv2.getStructuringElement(cv2.MORPH_RECT,(2,2))
