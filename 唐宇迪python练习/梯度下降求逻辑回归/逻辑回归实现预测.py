@@ -26,7 +26,7 @@ def sigmoid(z):
 # plt.show()
 
 pdData.insert(0,'Ones',1)
-orig_data=pdData.as_matrix()
+orig_data=pdData.values
 cols=orig_data.shape[1]
 X=orig_data[:,0:cols-1]#参数
 y=orig_data[:,cols-1:cols]#标签
@@ -35,11 +35,13 @@ threta=np.zeros([1,3])
 
 
 def model(X, theta):
-    return sigmoid(np.dot(X, theta.T))
+    sig=sigmoid(np.dot(X, theta.T))
+    return sig
 #定义损失函数
 def cost(X, y, theta):
     left = np.multiply(-y, np.log(model(X, theta)))
-    right = np.multiply(1 - y, np.log(1 - model(X, theta)))
+    temp=1 - model(X, theta)
+    right = np.multiply(1 - y, np.log(temp))
     return np.sum(left - right) / (len(X))
 #计算梯度
 def gradient(X,y,theta):
@@ -124,5 +126,5 @@ def runExpe(data, theta, batchSize, stopType, thresh, alpha):
 
 #选择的梯度下降方法是基于所有样本的
 n=10
-runExpe(orig_data, threta, 100, STOP_GRAD, thresh=500000, alpha=0.000001)
+runExpe(orig_data, threta, 100, STOP_ITER, thresh=40000, alpha=0.00000001)
 plt.show()

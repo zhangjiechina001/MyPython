@@ -1,5 +1,7 @@
 import numpy as np
 import csv
+from sklearn.datasets import fetch_20newsgroups
+twenty_train=fetch_20newsgroups(subset='train')
 emission_probability=np.array([[0.4,0.3,0.3]#晴的隐藏状态：0.4打球，0.3读书，0.3访友
                                   ,[0.2,0.3,0.5],#阴的隐藏状态是：0.2打球，0.3读书，0.5访友
                                [0.1,0.8,0.1]])#雨的隐藏状态是：0.1打球，0.8读书，0.1访友
