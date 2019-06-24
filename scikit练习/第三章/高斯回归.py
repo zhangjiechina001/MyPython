@@ -6,7 +6,7 @@ from sklearn.gaussian_process.kernels import RBF
 from sklearn.gaussian_process.kernels import ConstantKernel as C,Product,Sum
 
 def f(X):
-    return X*np.sin(X)-X
+    return X*np.sin(X)-0.5*X
 
 X=np.linspace(0,10,20)
 y=f(X)+np.random.normal(0,0.5,X.shape[0])
