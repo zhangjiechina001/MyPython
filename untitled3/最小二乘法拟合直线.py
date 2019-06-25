@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 x = np.arange(-1, 1, 0.04)
-c=np.random.normal(0,0.01,size=[3,3])
+c=np.random.normal(0,0.01,size=x.shape)
 y =x**2+c
 
 y1 = y + (np.random.rand(len(x)) - 0.5)
