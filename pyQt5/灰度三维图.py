@@ -10,12 +10,12 @@ def Calu(x,y):
     return img[x,y]
 fig=plt.figure()
 ax=Axes3D(fig)
-x,y=img.shape
-x=np.arange(0,x,10)
-y=np.arange(0,y,10)
+# x,y=img.shape
+x=np.arange(-10,100,1)
+y=np.arange(-10,100,1)
 x,y=np.meshgrid(x,y)
-r=np.sqrt(x**2+y**2)
-z=255-Calu(x,y)
+z=np.sin(x+y)
+# z=255-Calu(x,y)
 #高度
 ax.plot_surface(x,y,z,rstride=1,cstride=1,cmap=plt.get_cmap('rainbow'))
 #填充rainbow颜色
