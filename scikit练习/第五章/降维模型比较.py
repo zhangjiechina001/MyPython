@@ -36,7 +36,7 @@ for i,method in enumerate(methods):
     plt.axis('tight')
 
 #初始化六种降维模型
-estimators=[(manifold.Isomap(n_neighbors,n_cmponents),'Isomap'),(manifold.MDS(n_cmponents,max_iter=100,n_init=1),'MDS'),
+estimators=[(manifold.Isomap(n_neighbors,n_cmponents),'你好'),(manifold.MDS(n_cmponents,max_iter=100,n_init=1),'MDS'),
             (manifold.SpectralEmbedding(n_components=n_cmponents,n_neighbors=n_neighbors),'Laplace Eigenmaps'),
             (manifold.TSNE(n_cmponents,init='pca',random_state=0),'T-SNE'),(PCA(n_cmponents),'PCA'),(LDA(n_cmponents),'LDA'),]
 
@@ -45,7 +45,8 @@ for idx,(estimator_obj,estimator_name) in enumerate(estimators):
     t0=time()
     if estimator_name=='LDA':
         continue
-        Y=estimator_obj.fit_transform(X,color.astype(int))
+        ylabels=color.astype(int)
+        Y=estimator_obj.fit_transform(X,ylabels)
     else:
         Y=estimator_obj.fit_transform(X)
 
@@ -54,7 +55,7 @@ for idx,(estimator_obj,estimator_name) in enumerate(estimators):
     ax=fig.add_subplot(2,5,5+idx)
     #显示降维结果
     plt.scatter(Y[:,0],Y[:,1],c=color,cmap=plt.cm.Spectral)
-    plt.title('%s(%.2g sec)'%(estimator_name,t1-t0))
+    plt.title('%s(%.2g sec)'%(estimator_name,t1-t0),fontproperties="SimHei")
     ax.xaxis.set_major_formatter(NullFormatter())
     ax.yaxis.set_major_formatter(NullFormatter())
     plt.axis('tight')
