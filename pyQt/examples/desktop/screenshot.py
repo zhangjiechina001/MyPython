@@ -41,7 +41,6 @@
 ##
 #############################################################################
 
-
 from PyQt5.QtCore import QDir, Qt, QTimer
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import (QApplication, QCheckBox, QFileDialog, QGridLayout,

@@ -1,4 +1,5 @@
 import tensorflow as tf
+import tensorflow as tf1
 
 def input_fn():
     return {'age':[19,23,34,30,60,55,36],'name':['Robert','David','Kelly','Rose','Hayes','Luis','Lili']},[0,0,1,1,0,0,1]

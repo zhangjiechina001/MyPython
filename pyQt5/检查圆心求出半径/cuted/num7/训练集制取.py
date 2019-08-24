@@ -1,5 +1,6 @@
-import cv2
+import  cv2
 import numpy as np
+
 
 src=cv2.imread('cimg_1_4.jpg',cv2.IMREAD_GRAYSCALE)
 cv2.imshow('src',src)
