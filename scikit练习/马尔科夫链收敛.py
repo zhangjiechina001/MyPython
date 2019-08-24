@@ -1,7 +1,10 @@
 import numpy as np
+from hmmlearn import hmm
+import tensorflow as tf
+weight=tf.Variable(tf.random_normal([2,3],mean=0.3,stddev=0.1))
 
 init_probs=np.array([0.5,0.8,0.5])
-transform_probd=np.array([[0.7,0.1,0.2],[0.2,0.5,0.3],[0.2,0.4,0.4]])
+transform_probd=np.array([[0.7,0.2,0.1],[0.2,0.5,0.3],[0.2,0.4,0.4]])
 chanin=[init_probs]
 def chech_stable():
     if len(chanin)<3:
