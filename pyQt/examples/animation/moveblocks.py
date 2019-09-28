@@ -133,7 +133,7 @@ if __name__ == '__main__':
     button3.setZValue(2)
     button4.setZValue(3)
 
-    scene = QGraphicsScene(0, 0, 300, 300)
+    scene = QGraphicsScene(0, 0, 100, 100)
     scene.setBackgroundBrush(Qt.black)
     scene.addItem(button1)
     scene.addItem(button2)

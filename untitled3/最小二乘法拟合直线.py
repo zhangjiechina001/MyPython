@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.arange(-1, 1, 0.04)
+x = np.arange(-1, 1, 0.01)
 c=np.random.normal(0,0.01,size=x.shape)
 y =x**2+c
 
