@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img=cv2.imread('haku.png')
+img=cv2.imread('Itality.jpg')
 mask = np.zeros(img.shape, np.uint8)
 drawFlag = False
 imgcopy=img.copy()
@@ -15,8 +15,8 @@ def draw_circle(event, x, y, flags, param):
     if (event==cv2.EVENT_LBUTTONUP):
         drawFlag=False
     if (event==cv2.EVENT_MOUSEMOVE)&drawFlag:
-        cv2.circle(imgcopy, (x, y), 10, (255, 255, 0), -1)
-        cv2.circle(mask, (x, y), 10, (255, 255, 255), -1)
+        cv2.circle(imgcopy, (x, y), 5, (255, 255, 0), -1)
+        cv2.circle(mask, (x, y), 5, (255, 255, 255), -1)
     if(event==cv2.EVENT_RBUTTONDOWN):
         imgcopy=repir_pic(imgcopy,mask=mask)
     cv2.imshow('image',imgcopy)
