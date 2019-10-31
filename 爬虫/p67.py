@@ -62,6 +62,6 @@ def parse_data(data):
 if __name__=='__main__':
     headers=get_headers()
     proxies=get_proxies()
-    data=get_data('https://www.baidu.com',num_retries=3,proxies=proxies)
+    data=get_data('https://295737015.qzone.qq.com/',num_retries=3,proxies=proxies)
     interesting_data=parse_data(data)
     print(interesting_data)
