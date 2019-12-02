@@ -3,19 +3,18 @@ import cv2
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-
-img = cv2.imread('flower.jpg',cv2.IMREAD_GRAYSCALE)
+img = cv2.imread('cimg_1_1.jpg',cv2.IMREAD_GRAYSCALE)
 def Calu(x,y):
     global img
     return img[x,y]
 fig=plt.figure()
 ax=Axes3D(fig)
-# x,y=img.shape
-x=np.arange(-10,100,1)
-y=np.arange(-10,100,1)
+x,y=img.shape
+x=np.arange(0,x,1)
+y=np.arange(0,y,1)
 x,y=np.meshgrid(x,y)
-z=np.sin(x+y)
-# z=255-Calu(x,y)
+# z=np.sin(x+y)
+z=Calu(x,y)
 #高度
 ax.plot_surface(x,y,z,rstride=1,cstride=1,cmap=plt.get_cmap('rainbow'))
 #填充rainbow颜色

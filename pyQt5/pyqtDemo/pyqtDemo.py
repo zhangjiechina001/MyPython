@@ -14,8 +14,11 @@ class LayoutDemo(QMainWindow,Ui_MainWindow):
     def __init__(self,parent=None):
         super(LayoutDemo,self).__init__(parent)
         self.setupUi(self)
-    def on_pushButton_click(self):
+        self.on_pushButton_click.connect(close)
+    def on_pushButton_click(self,event):
         print('hello world!')
+    def close(self):
+        self.close()
 
 if __name__=='__main__':
     import sys
